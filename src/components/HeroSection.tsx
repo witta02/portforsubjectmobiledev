@@ -44,9 +44,15 @@ export default function HeroSection({ classworks }: HeroSectionProps) {
 
           {/* Student Info & Bio */}
           <div className="flex-1 text-center md:text-left space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs text-cyan-300">
-              <GraduationCap className="w-3.5 h-3.5 text-cyan-400" />
-              <span>แผนกวิชาเทคโนโลยีสารสนเทศ (Information Technology)</span>
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800 text-xs text-cyan-300 font-medium">
+                <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                <span>วิชา: Mobile Application Developer</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs text-slate-300">
+                <GraduationCap className="w-3.5 h-3.5 text-slate-400" />
+                <span>แผนกวิชาเทคโนโลยีสารสนเทศ</span>
+              </div>
             </div>
 
             <div>
@@ -54,7 +60,7 @@ export default function HeroSection({ classworks }: HeroSectionProps) {
                 วิธวินท์ แก้วพัฒ
               </h1>
               <p className="text-slate-400 mt-2 text-base sm:text-lg max-w-2xl">
-                แฟ้มสะสมผลงานการเรียน (Student Portfolio) รวบรวมผลงานการบ้าน โครงงาน สรุปแล็บ ชิ้นงานกราฟิก และแบบฝึกหัด ประจำห้อง <span className="text-cyan-400 font-medium">1สทส1</span>
+                แฟ้มสะสมผลงานการเรียน (Student Portfolio) รายวิชา <span className="text-cyan-400 font-semibold">Mobile Application Developer</span> รวบรวมแอปพลิเคชัน โครงงาน สรุปแล็บ และแบบฝึกหัด ประจำห้อง <span className="text-amber-400 font-semibold">1สทส1</span>
               </p>
             </div>
 

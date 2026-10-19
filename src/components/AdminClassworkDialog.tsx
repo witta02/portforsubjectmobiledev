@@ -13,14 +13,14 @@ interface AdminClassworkDialogProps {
 }
 
 const COMMON_SUBJECTS = [
+  'Mobile Application Developer',
+  'Mobile Application Developer (Flutter & Dart)',
+  'Mobile Application Developer (Android Kotlin)',
+  'Mobile Application Developer (React Native)',
   'การพัฒนาเว็บไซต์ (Web Development)',
-  'การเขียนโปรแกรมคอมพิวเตอร์ (Programming)',
   'ระบบจัดการฐานข้อมูล (Database Systems)',
   'ระบบเครือข่ายคอมพิวเตอร์ (Computer Network)',
   'คอมพิวเตอร์กราฟิกและสื่อประสม (Graphics & Multimedia)',
-  'ระบบปฏิบัติการ (Operating Systems)',
-  'โครงสร้างข้อมูลและอัลกอริทึม (Data Structures)',
-  'ภาษาอังกฤษสำหรับไอที (English for IT)',
   'กิจกรรมและผลงานอื่นๆ (Other)',
 ];
 
