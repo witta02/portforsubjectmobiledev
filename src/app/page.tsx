@@ -1,14 +1,18 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import ClassworkCard from '@/components/ClassworkCard';
-import ClassworkModal from '@/components/ClassworkModal';
-import SupabaseConfigModal from '@/components/SupabaseConfigModal';
+import { SkeletonGrid } from '@/components/ClassworkSkeleton';
 import { fetchClassworks } from '@/lib/storage';
 import { Classwork, FilterCategory } from '@/types/classwork';
 import { Sparkles, Search, Layers, Link as LinkIcon, Image as ImageIcon, FileText, Compass, Award } from 'lucide-react';
+
+// Lazy loaded modals to keep initial bundle ultra-fast
+const ClassworkModal = dynamic(() => import('@/components/ClassworkModal'), { ssr: false });
+const SupabaseConfigModal = dynamic(() => import('@/components/SupabaseConfigModal'), { ssr: false });
 
 export default function HomePage() {
   const [classworks, setClassworks] = useState<Classwork[]>([]);
@@ -182,12 +186,9 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Loading State */}
+        {/* Loading State with Claymorphism Skeleton */}
         {loading ? (
-          <div className="py-20 flex flex-col items-center justify-center text-[#7d6353] space-y-3">
-            <div className="w-8 h-8 border-3 border-[#b8651f] border-t-transparent rounded-full animate-spin" />
-            <p className="text-sm font-medium">กำลังโหลดผลงาน</p>
-          </div>
+          <SkeletonGrid count={6} />
         ) : filteredList.length > 0 ? (
           /* Cards Grid */
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

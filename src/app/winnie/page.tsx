@@ -1,16 +1,20 @@
 'use client';
 
 import React, { useState, useEffect, useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import ClassworkCard from '@/components/ClassworkCard';
-import ClassworkModal from '@/components/ClassworkModal';
-import AdminClassworkDialog from '@/components/AdminClassworkDialog';
-import SupabaseConfigModal from '@/components/SupabaseConfigModal';
+import { SkeletonGrid } from '@/components/ClassworkSkeleton';
 import { fetchClassworks, addClasswork, updateClasswork, toggleShowcase, deleteClasswork } from '@/lib/storage';
 import { Classwork, FilterCategory } from '@/types/classwork';
+
+// Lazy load dialogs & modals to optimize performance
+const AdminClassworkDialog = dynamic(() => import('@/components/AdminClassworkDialog'), { ssr: false });
+const ClassworkModal = dynamic(() => import('@/components/ClassworkModal'), { ssr: false });
+const SupabaseConfigModal = dynamic(() => import('@/components/SupabaseConfigModal'), { ssr: false });
 import {
   Unlock,
   KeyRound,
@@ -343,12 +347,9 @@ export default function WinnieAdminPage() {
           </div>
         </div>
 
-        {/* Content Grid */}
+        {/* Content Grid with Skeleton Loading */}
         {loading ? (
-          <div className="py-20 flex flex-col items-center justify-center text-[#7d6353] space-y-3">
-            <div className="w-8 h-8 border-3 border-[#b8651f] border-t-transparent rounded-full animate-spin" />
-            <p className="text-sm font-medium">กำลังโหลดข้อมูลผลงาน...</p>
-          </div>
+          <SkeletonGrid count={6} />
         ) : displayedItems.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {displayedItems.map((item) => (

@@ -22,6 +22,8 @@ export default function ClassworkCard({
   onEdit,
   onDelete,
 }: ClassworkCardProps) {
+  const [imageLoaded, setImageLoaded] = React.useState(false);
+
   const getTypeBadge = () => {
     switch (item.type) {
       case 'link':
@@ -56,17 +58,25 @@ export default function ClassworkCard({
           : 'border-[#e8dcd0]/80'
       }`}
     >
-      {/* Top Banner / Image Thumbnail */}
+      {/* Top Banner / Image Thumbnail with Lazy Loading & Skeleton Shimmer */}
       {item.type === 'photo' && item.url ? (
         <div
           onClick={() => onPreview(item)}
           className="relative w-full h-48 bg-[#f5ebe0] cursor-pointer overflow-hidden rounded-t-[27px]"
         >
+          {/* Skeleton Shimmer while loading */}
+          {!imageLoaded && (
+            <div className="absolute inset-0 bg-[#ebdccf]/70 animate-pulse" />
+          )}
           <Image
             src={item.url}
             alt={item.title}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+            onLoad={() => setImageLoaded(true)}
+            className={`object-cover group-hover:scale-105 transition-all duration-500 ${
+              imageLoaded ? 'opacity-100 blur-0' : 'opacity-0 blur-sm'
+            }`}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#2c1a11]/40 via-transparent to-transparent" />
