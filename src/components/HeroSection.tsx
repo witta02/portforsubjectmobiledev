@@ -46,50 +46,50 @@ export default function HeroSection({ classworks }: HeroSectionProps) {
             */}
           </div>
 
-            {/* Student Info & Bio */}
-            <div className="flex-1 text-center md:text-left space-y-3.5">
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 clay-pill text-xs font-semibold text-[#6d3e1d]">
-                  <Smartphone className="w-3.5 h-3.5 text-[#b8651f]" />
-                  <span>วิชา: Mobile Application Developer</span>
-                </div>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 clay-pill text-xs font-medium text-[#7d6353]">
-                  <GraduationCap className="w-3.5 h-3.5 text-[#8c6f5d]" />
-                  <span>แผนกวิชาเทคโนโลยีสารสนเทศ</span>
-                </div>
+          {/* Student Info & Bio */}
+          <div className="flex-1 text-center md:text-left space-y-3.5">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 clay-pill text-xs font-semibold text-[#6d3e1d]">
+                <Smartphone className="w-3.5 h-3.5 text-[#b8651f]" />
+                <span>วิชา: Mobile Application Developer</span>
               </div>
-
-              <div>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#361f12]">
-                  วิธวินท์ แก้วพัฒ
-                </h1>
-                <p className="text-[#6d513f] mt-2 text-sm sm:text-base leading-relaxed max-w-2xl">
-                  แฟ้มสะสมผลงานการเรียน (Student Portfolio) รายวิชา <span className="font-bold text-[#964d17]">Mobile Application Developer</span> รวบรวมแอปพลิเคชัน โครงงาน สรุปแล็บ และแบบฝึกหัด ประจำห้อง <span className="font-bold text-[#361f12]">1สทส1</span>
-                </p>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 clay-pill text-xs font-medium text-[#7d6353]">
+                <GraduationCap className="w-3.5 h-3.5 text-[#8c6f5d]" />
+                <span>แผนกวิชาเทคโนโลยีสารสนเทศ</span>
               </div>
+            </div>
 
-              {/* Clay Stats Chips */}
-              <div className="flex flex-wrap justify-center md:justify-start gap-2.5 pt-2">
-                <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-2xl bg-[#faefe3] border border-[#e5cdb7] text-[#874614] text-xs sm:text-sm font-semibold shadow-xs">
-                  <Sparkles className="w-4 h-4 fill-[#d88337] text-[#d88337]" />
-                  <span>โชว์เคสเด่น: {showcaseCount} ชิ้น</span>
-                </div>
-                <div className="flex items-center gap-2 px-3.5 py-1.5 clay-pill text-[#54331d] text-xs sm:text-sm font-medium">
-                  <FolderGit2 className="w-4 h-4 text-[#8c5228]" />
-                  <span>โปรเจกต์/ลิงก์: {linkCount}</span>
-                </div>
-                <div className="flex items-center gap-2 px-3.5 py-1.5 clay-pill text-[#54331d] text-xs sm:text-sm font-medium">
-                  <ImageIcon className="w-4 h-4 text-[#a35e2e]" />
-                  <span>รูปภาพ/กราฟิก: {photoCount}</span>
-                </div>
-                <div className="flex items-center gap-2 px-3.5 py-1.5 clay-pill text-[#54331d] text-xs sm:text-sm font-medium">
-                  <FileText className="w-4 h-4 text-[#5c7a4d]" />
-                  <span>ไฟล์/เอกสาร: {fileCount}</span>
-                </div>
+            <div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#361f12]">
+                วิธวินท์ แก้วพัฒ
+              </h1>
+              <p className="text-[#6d513f] mt-2 text-sm sm:text-base leading-relaxed max-w-2xl">
+                แฟ้มสะสมผลงานการเรียนรายวิชา <span className="font-bold text-[#964d17]">การพัฒนาซอฟต์แวร์สำหรับอุปกรณ์เคลื่อนที่ 31901-2009</span> ประจำห้อง <span className="font-bold text-[#361f12]">1สทส1</span>
+              </p>
+            </div>
+
+            {/* Clay Stats Chips */}
+            <div className="flex flex-wrap justify-center md:justify-start gap-2.5 pt-2">
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-2xl bg-[#faefe3] border border-[#e5cdb7] text-[#874614] text-xs sm:text-sm font-semibold shadow-xs">
+                <Sparkles className="w-4 h-4 fill-[#d88337] text-[#d88337]" />
+                <span>โชว์เคสเด่น: {showcaseCount} ชิ้น</span>
+              </div>
+              <div className="flex items-center gap-2 px-3.5 py-1.5 clay-pill text-[#54331d] text-xs sm:text-sm font-medium">
+                <FolderGit2 className="w-4 h-4 text-[#8c5228]" />
+                <span>โปรเจกต์/ลิงก์: {linkCount}</span>
+              </div>
+              <div className="flex items-center gap-2 px-3.5 py-1.5 clay-pill text-[#54331d] text-xs sm:text-sm font-medium">
+                <ImageIcon className="w-4 h-4 text-[#a35e2e]" />
+                <span>รูปภาพ/กราฟิก: {photoCount}</span>
+              </div>
+              <div className="flex items-center gap-2 px-3.5 py-1.5 clay-pill text-[#54331d] text-xs sm:text-sm font-medium">
+                <FileText className="w-4 h-4 text-[#5c7a4d]" />
+                <span>ไฟล์/เอกสาร: {fileCount}</span>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </section>
   );
 }
