@@ -49,24 +49,24 @@ create policy "Insert Storage" on storage.objects for insert with check (bucket_
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#2c1a11]/40 backdrop-blur-md animate-in fade-in duration-200">
       <div
-        className="relative w-full max-w-xl rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl p-6 sm:p-8 space-y-6"
+        className="relative w-full max-w-xl rounded-[32px] bg-white border border-[#e8dcd0] shadow-[0_24px_60px_rgba(62,36,21,0.2)] p-6 sm:p-8 space-y-6"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="p-2.5 rounded-xl bg-emerald-950 text-emerald-400 border border-emerald-800">
+          <div className="flex items-center gap-3">
+            <div className="p-3 rounded-2xl bg-[#edf7ee] text-[#2d6634] border border-[#cfebd2]">
               <Database className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-white">การเชื่อมต่อ Supabase Database</h2>
-              <p className="text-xs text-slate-400">ฐานข้อมูลคลาวด์สำหรับบันทึกผลงานการเรียน</p>
+              <h2 className="text-lg font-bold text-[#361f12]">การเชื่อมต่อ Supabase Database</h2>
+              <p className="text-xs text-[#8c6f5d]">ฐานข้อมูลคลาวด์สำหรับบันทึกผลงานการเรียน</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition"
+            className="p-2 rounded-full text-[#8c6f5d] hover:text-[#361f12] hover:bg-[#f7eee3] transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -76,62 +76,62 @@ create policy "Insert Storage" on storage.objects for insert with check (bucket_
         <div
           className={`p-4 rounded-2xl border flex items-start gap-3 ${
             isSupabaseConfigured
-              ? 'bg-emerald-950/30 border-emerald-500/40 text-emerald-300'
-              : 'bg-amber-950/30 border-amber-500/40 text-amber-300'
+              ? 'bg-[#edf7ee] border-[#cfebd2] text-[#203b24]'
+              : 'bg-[#faefe3] border-[#e5cdb7] text-[#5c3010]'
           }`}
         >
           <div className="mt-0.5">
             {isSupabaseConfigured ? (
-              <ShieldCheck className="w-5 h-5 text-emerald-400" />
+              <ShieldCheck className="w-5 h-5 text-[#2d6634]" />
             ) : (
-              <Database className="w-5 h-5 text-amber-400" />
+              <Database className="w-5 h-5 text-[#b8651f]" />
             )}
           </div>
           <div>
-            <p className="text-sm font-semibold">
+            <p className="text-sm font-bold">
               {isSupabaseConfigured
                 ? 'เชื่อมต่อ Supabase สำเร็จแล้ว!'
                 : 'กำลังทำงานในโหมด Local Storage'}
             </p>
-            <p className="text-xs mt-1 text-slate-300 leading-relaxed">
+            <p className="text-xs mt-1 text-[#6b5241] leading-relaxed">
               {isSupabaseConfigured
-                ? 'ข้อมูลผลงาน ลิงก์ รูปภาพ และไฟล์ทั้งหมดจะถูกบันทึกลงใน Supabase Cloud ของคุณแบบเรียลไทม์'
-                : 'ระบบสามารถเพิ่ม ลบ แก้ไข ผลงานได้ตามปกติในเครื่องนี้ หากต้องการเชื่อมต่อ Supabase บน Vercel ให้ทำตาม 3 ขั้นตอนด้านล่าง'}
+                ? 'ข้อมูลผลงาน ลิงก์ รูปภาพ และไฟล์ทั้งหมดจะถูกบันทึกลงใน Supabase Cloud แบบเรียลไทม์'
+                : 'ระบบสามารถเพิ่ม ลบ แก้ไข ผลงานได้ตามปกติในเครื่องนี้ หากต้องการต่อ Supabase บน Vercel ให้ทำตาม 3 ขั้นตอนด้านล่าง'}
             </p>
           </div>
         </div>
 
         {/* Steps */}
-        <div className="space-y-3 text-xs sm:text-sm text-slate-300">
-          <p className="font-semibold text-white">ขั้นตอนเชื่อมต่อ Supabase สำหรับ Vercel:</p>
+        <div className="space-y-3 text-xs sm:text-sm text-[#54331d]">
+          <p className="font-bold text-[#361f12]">ขั้นตอนเชื่อมต่อ Supabase สำหรับ Vercel:</p>
           
-          <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-            <span className="font-semibold text-cyan-400">1. เข้า Supabase แล้วสร้างโปรเจกต์ใหม่:</span>
-            <p className="text-xs text-slate-400">
-              ไปที่ <a href="https://supabase.com" target="_blank" className="text-cyan-400 underline inline-flex items-center gap-0.5">supabase.com <ExternalLink className="w-3 h-3" /></a> สมัครหรือล็อกอิน แล้วกด New Project
+          <div className="p-3.5 rounded-2xl bg-[#faf5ef] border border-[#ebdccf] space-y-1">
+            <span className="font-bold text-[#964d17]">1. เข้า Supabase แล้วสร้างโปรเจกต์ใหม่:</span>
+            <p className="text-xs text-[#7d6353]">
+              ไปที่ <a href="https://supabase.com" target="_blank" className="text-[#b8651f] underline font-semibold inline-flex items-center gap-0.5">supabase.com <ExternalLink className="w-3 h-3" /></a> สมัครหรือล็อกอิน แล้วกด New Project
             </p>
           </div>
 
-          <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+          <div className="p-3.5 rounded-2xl bg-[#faf5ef] border border-[#ebdccf] space-y-2">
             <div className="flex items-center justify-between">
-              <span className="font-semibold text-cyan-400">2. รัน SQL Schema ใน SQL Editor:</span>
+              <span className="font-bold text-[#964d17]">2. รัน SQL Schema ใน SQL Editor:</span>
               <button
                 type="button"
                 onClick={handleCopySql}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition"
+                className="inline-flex items-center gap-1.5 px-3 py-1 clay-pill text-xs font-bold text-[#54331d] cursor-pointer"
               >
-                {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
                 {copied ? 'คัดลอก SQL แล้ว!' : 'คัดลอกคำสั่ง SQL'}
               </button>
             </div>
-            <p className="text-xs text-slate-400">
-              นำไฟล์ <code className="text-cyan-300 bg-slate-900 px-1 py-0.5 rounded">supabase_schema.sql</code> ไปวางและกด Run ได้ทันที
+            <p className="text-xs text-[#7d6353]">
+              นำไฟล์ <code className="text-[#8c4b14] bg-white px-1.5 py-0.5 rounded-md border border-[#ebdccf] font-mono">supabase_schema.sql</code> ไปวางและกด Run ได้ทันที
             </p>
           </div>
 
-          <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-            <span className="font-semibold text-cyan-400">3. เพิ่ม Environment Variables ใน Vercel:</span>
-            <div className="text-xs text-slate-400 space-y-0.5 font-mono">
+          <div className="p-3.5 rounded-2xl bg-[#faf5ef] border border-[#ebdccf] space-y-1">
+            <span className="font-bold text-[#964d17]">3. เพิ่ม Environment Variables ใน Vercel:</span>
+            <div className="text-xs text-[#6b5241] space-y-0.5 font-mono">
               <p>NEXT_PUBLIC_SUPABASE_URL = [URL ของคุณ]</p>
               <p>NEXT_PUBLIC_SUPABASE_ANON_KEY = [Anon Key ของคุณ]</p>
               <p>NEXT_PUBLIC_ADMIN_PIN = 1234 (หรือรหัส PIN ที่คุณต้องการ)</p>
@@ -143,7 +143,7 @@ create policy "Insert Storage" on storage.objects for insert with check (bucket_
           <button
             type="button"
             onClick={onClose}
-            className="px-5 py-2 rounded-xl text-sm font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition"
+            className="px-6 py-2.5 clay-btn-caramel text-xs sm:text-sm font-bold cursor-pointer"
           >
             เข้าใจแล้ว
           </button>

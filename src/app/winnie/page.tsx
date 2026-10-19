@@ -12,21 +12,13 @@ import SupabaseConfigModal from '@/components/SupabaseConfigModal';
 import { fetchClassworks, addClasswork, updateClasswork, toggleShowcase, deleteClasswork } from '@/lib/storage';
 import { Classwork, FilterCategory } from '@/types/classwork';
 import {
-  Lock,
   Unlock,
   KeyRound,
-  Sparkles,
   Plus,
-  Layers,
   Star,
   ExternalLink,
   ShieldCheck,
-  Search,
-  Filter,
-  CheckCircle2,
-  FileText,
-  Image as ImageIcon,
-  Link as LinkIcon
+  Search
 } from 'lucide-react';
 
 const ADMIN_STORAGE_KEY = 'auntie_orn_winnie_auth';
@@ -51,7 +43,6 @@ export default function WinnieAdminPage() {
   const adminPin = process.env.NEXT_PUBLIC_ADMIN_PIN || '1234';
 
   useEffect(() => {
-    // Check existing session
     const savedAuth = sessionStorage.getItem(ADMIN_STORAGE_KEY);
     if (savedAuth === 'true') {
       setIsAuthenticated(true);
@@ -93,7 +84,6 @@ export default function WinnieAdminPage() {
     setPinInput('');
   };
 
-  // Add or Edit classwork handler
   const handleSaveClasswork = async (
     itemData: Omit<Classwork, 'id' | 'created_at'>,
     editId?: string
@@ -108,9 +98,7 @@ export default function WinnieAdminPage() {
     setEditingItem(null);
   };
 
-  // Quick toggle showcase status
   const handleToggleShowcase = async (id: string, current: boolean) => {
-    // Optimistic UI update
     setClassworks((prev) =>
       prev.map((item) => (item.id === id ? { ...item, is_showcase: !current } : item))
     );
@@ -118,12 +106,10 @@ export default function WinnieAdminPage() {
       await toggleShowcase(id, current);
     } catch (err) {
       console.error('Failed to toggle showcase:', err);
-      // Revert if error
       await loadData();
     }
   };
 
-  // Delete item
   const handleDeleteClasswork = async (id: string) => {
     setClassworks((prev) => prev.filter((item) => item.id !== id));
     try {
@@ -134,18 +120,14 @@ export default function WinnieAdminPage() {
     }
   };
 
-  // Filtered Items for Winnie
   const displayedItems = useMemo(() => {
     return classworks.filter((item) => {
-      // Tab filter
       if (activeTab === 'showcase_only' && !item.is_showcase) {
         return false;
       }
-      // Type filter
       if (filterType !== 'all' && item.type !== filterType) {
         return false;
       }
-      // Search
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase();
         const matchTitle = item.title.toLowerCase().includes(query);
@@ -162,44 +144,45 @@ export default function WinnieAdminPage() {
 
   const showcaseCount = classworks.filter((c) => c.is_showcase).length;
 
-  // 1. If not authenticated, render Login Screen
+  // 1. Login Screen with Brownie Claymorphism
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4 bg-slate-950 text-slate-100 relative overflow-hidden">
-        {/* Background glow effects */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="min-h-screen flex items-center justify-center p-4 bg-[#fcf8f4] text-[#2c1a11] relative overflow-hidden">
+        {/* Warm Ambient Glows */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#ebd7c2]/60 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative w-full max-w-md rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl p-8 backdrop-blur-xl">
+        <div className="relative w-full max-w-md rounded-[32px] bg-white border border-[#e8dcd0] shadow-[0_24px_50px_rgba(62,36,21,0.1)] p-8 sm:p-10">
           {/* Avatar & Title */}
           <div className="flex flex-col items-center text-center space-y-4">
-            <div className="relative w-24 h-24 rounded-full overflow-hidden ring-4 ring-cyan-500/60 shadow-xl shadow-cyan-500/20">
-              <Image
-                src="/profile.jpg"
-                alt="วิธวินท์ แก้วพัฒ"
-                fill
-                className="object-cover"
-                priority
-              />
+            <div className="relative w-24 h-24 rounded-3xl overflow-hidden p-1 bg-[#f6eee4] shadow-[6px_10px_20px_rgba(62,36,21,0.12),inset_2px_2px_4px_rgba(255,255,255,0.9)] border border-[#dec7b2]">
+              <div className="relative w-full h-full rounded-[20px] overflow-hidden">
+                <Image
+                  src="/profile.jpg"
+                  alt="วิธวินท์ แก้วพัฒ"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
             </div>
             <div>
               <div className="flex items-center justify-center gap-2">
-                <h1 className="text-xl font-bold text-white">วิธวินท์ แก้วพัฒ (Winnie)</h1>
-                <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-cyan-950 text-cyan-300 border border-cyan-800">
+                <h1 className="text-xl font-extrabold text-[#361f12]">วิธวินท์ แก้วพัฒ (Winnie)</h1>
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#faefe3] text-[#a8591a] border border-[#e8ceb7]">
                   1สทส1
                 </span>
               </div>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-[#7d6353] mt-1 font-medium">
                 เข้าสู่ระบบผู้ดูแลเพื่อเพิ่มผลงานและปรับแต่งโชว์เคส
               </p>
             </div>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleLogin} className="mt-8 space-y-4">
+          <form onSubmit={handleLogin} className="mt-8 space-y-5">
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
-                <KeyRound className="w-3.5 h-3.5 text-cyan-400" />
+              <label className="text-xs font-bold text-[#4a2e1b] flex items-center gap-1.5">
+                <KeyRound className="w-3.5 h-3.5 text-[#b8651f]" />
                 รหัส PIN สำหรับเข้าจัดการ (Admin Passcode)
               </label>
               <input
@@ -211,16 +194,16 @@ export default function WinnieAdminPage() {
                 }}
                 placeholder="กรอกรหัส PIN (เริ่มต้น: 1234)"
                 autoFocus
-                className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 text-sm tracking-wider"
+                className="w-full px-4 py-3 clay-input text-[#361f12] placeholder-[#a68c7c] text-sm tracking-wider"
               />
               {authError && (
-                <p className="text-xs text-rose-400 font-medium pt-1">{authError}</p>
+                <p className="text-xs text-rose-600 font-semibold pt-1">{authError}</p>
               )}
             </div>
 
             <button
               type="submit"
-              className="w-full py-3 rounded-xl font-semibold text-sm bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/25 transition active:scale-98 flex items-center justify-center gap-2"
+              className="w-full py-3.5 clay-btn-caramel font-bold text-sm cursor-pointer flex items-center justify-center gap-2"
             >
               <Unlock className="w-4 h-4" />
               เข้าสู่ระบบ /winnie
@@ -228,13 +211,13 @@ export default function WinnieAdminPage() {
           </form>
 
           {/* Helper Note */}
-          <div className="mt-6 pt-4 border-t border-slate-800 text-center">
-            <p className="text-[11px] text-slate-500">
-              รหัสเริ่มต้นคือ <span className="text-cyan-400 font-mono font-bold">1234</span> (สามารถเปลี่ยนได้ที่ <code className="text-slate-400">NEXT_PUBLIC_ADMIN_PIN</code>)
+          <div className="mt-6 pt-4 border-t border-[#f0e4d7] text-center">
+            <p className="text-[11px] text-[#8c6f5d]">
+              รหัสเริ่มต้นคือ <span className="text-[#964d17] font-mono font-bold">1234</span>
             </p>
             <Link
               href="/"
-              className="mt-3 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyan-300 transition"
+              className="mt-3 inline-flex items-center gap-1 text-xs text-[#6d4d37] hover:text-[#964d17] font-semibold transition"
             >
               ← กลับไปหน้าโชว์เคสสำหรับคนทั่วไป
             </Link>
@@ -244,22 +227,22 @@ export default function WinnieAdminPage() {
     );
   }
 
-  // 2. Authenticated Admin View: Winnie has full superpowers!
+  // 2. Authenticated Admin View: Brownie Claymorphism
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100">
+    <div className="min-h-screen flex flex-col bg-[#fcf8f4] text-[#2c1a11]">
       {/* Top Banner indicating Admin Mode */}
-      <div className="bg-gradient-to-r from-cyan-950 via-blue-950 to-indigo-950 border-b border-cyan-800/60 px-4 py-2.5">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2 text-cyan-200">
-            <ShieldCheck className="w-4 h-4 text-cyan-400" />
-            <span className="font-semibold">โหมดผู้ดูแล (Winnie Admin Panel):</span>
-            <span>คุณสามารถเพิ่ม ลบ แก้ไข และกดดาว ⭐ เพื่อเลือกงานไปโชว์ใน Showcase ได้ทันที!</span>
+      <div className="bg-[#faefe3] border-b border-[#e5cdb7] px-4 py-2.5">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs font-medium text-[#5c3010]">
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-[#b8651f]" />
+            <span className="font-bold">โหมดผู้ดูแล (Winnie Admin Panel):</span>
+            <span>เพิ่ม ลบ แก้ไข และกดดาว ⭐ บนการ์ด เพื่อเลือกงานไปโชว์เคสได้ทันที!</span>
           </div>
           <div className="flex items-center gap-3">
             <Link
               href="/"
               target="_blank"
-              className="inline-flex items-center gap-1 text-cyan-300 hover:underline font-medium"
+              className="inline-flex items-center gap-1 text-[#964d17] font-bold hover:underline"
             >
               เปิดดูหน้าคนทั่วไป (Visitor View) <ExternalLink className="w-3 h-3" />
             </Link>
@@ -283,17 +266,17 @@ export default function WinnieAdminPage() {
 
       {/* Admin Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
-        {/* Quick Dashboard Action Bar */}
-        <div className="p-5 rounded-3xl bg-slate-900/80 border border-slate-800 shadow-xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+        {/* Quick Dashboard Action Bar in Clay Card */}
+        <div className="p-6 sm:p-7 clay-card flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
           <div>
-            <h2 className="text-xl font-bold text-white flex items-center gap-2">
+            <h2 className="text-xl font-bold text-[#361f12] flex items-center gap-2">
               <span>จัดการผลงานการเรียน</span>
-              <span className="text-xs font-normal text-slate-400">
+              <span className="text-xs font-normal text-[#7d6353]">
                 (ทั้งหมด {classworks.length} ชิ้น • โชว์เคส {showcaseCount} ชิ้น)
               </span>
             </h2>
-            <p className="text-xs text-slate-400 mt-1">
-              คลิกปุ่มรูปดาว <span className="text-amber-400 font-semibold">⭐</span> บนการ์ดใดก็ได้ เพื่อเปิด/ปิดการแสดงในหน้าแรกของเว็บไซต์
+            <p className="text-xs text-[#7d6353] mt-1 font-medium">
+              คลิกปุ่มรูปดาว <span className="text-[#d88337] font-bold">⭐</span> บนการ์ดใดก็ได้ เพื่อเปิด/ปิดการแสดงในหน้าแรกของเว็บไซต์ทันที
             </p>
           </div>
 
@@ -302,46 +285,46 @@ export default function WinnieAdminPage() {
               setEditingItem(null);
               setIsAddModalOpen(true);
             }}
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/25 transition active:scale-95"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 clay-btn-caramel text-sm font-bold cursor-pointer"
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="w-4 h-4 stroke-[2.5]" />
             เพิ่มผลงานใหม่ (Add Work)
           </button>
         </div>
 
         {/* Tabs & Search & Filter */}
-        <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between bg-slate-900/60 p-3 rounded-2xl border border-slate-800">
+        <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between p-3.5 rounded-[24px] bg-white border border-[#ebdccf] shadow-[6px_10px_20px_rgba(62,36,21,0.05)]">
           {/* Main Tab: All vs Showcase Only */}
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-2">
             <button
               onClick={() => setActiveTab('all')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition ${
+              className={`px-4 py-2 text-xs font-bold transition cursor-pointer ${
                 activeTab === 'all'
-                  ? 'bg-slate-800 text-white border border-slate-700'
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'clay-pill-active'
+                  : 'clay-pill text-[#6d4d37]'
               }`}
             >
               ผลงานทั้งหมด ({classworks.length})
             </button>
             <button
               onClick={() => setActiveTab('showcase_only')}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition ${
+              className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition cursor-pointer ${
                 activeTab === 'showcase_only'
-                  ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                  : 'text-slate-400 hover:text-amber-300'
+                  ? 'clay-pill-active'
+                  : 'clay-pill text-[#6d4d37]'
               }`}
             >
-              <Star className="w-3.5 h-3.5 fill-amber-400" />
+              <Star className="w-3.5 h-3.5 fill-[#d88337]" />
               เฉพาะที่อยู่ใน Showcase ({showcaseCount})
             </button>
           </div>
 
           {/* Type Filter & Search Box */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <select
               value={filterType}
               onChange={(e) => setFilterType(e.target.value as FilterCategory)}
-              className="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-700 text-slate-300 text-xs focus:outline-none focus:border-cyan-500"
+              className="px-3.5 py-2 clay-input text-xs font-medium text-[#4a2e1b]"
             >
               <option value="all">ทุกประเภท</option>
               <option value="link">เฉพาะลิงก์</option>
@@ -350,13 +333,13 @@ export default function WinnieAdminPage() {
             </select>
 
             <div className="relative flex-1 sm:w-56">
-              <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <Search className="w-3.5 h-3.5 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#a68c7c]" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="ค้นหาชื่อ, วิชา, แท็ก..."
-                className="w-full pl-8 pr-3 py-1.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-cyan-500"
+                placeholder="ค้นหาชื่อ, แท็ก..."
+                className="w-full pl-9 pr-3.5 py-2 clay-input text-xs text-[#361f12] placeholder-[#a68c7c]"
               />
             </div>
           </div>
@@ -364,9 +347,9 @@ export default function WinnieAdminPage() {
 
         {/* Content Grid */}
         {loading ? (
-          <div className="py-20 flex flex-col items-center justify-center text-slate-400 space-y-3">
-            <div className="w-8 h-8 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin" />
-            <p className="text-sm">กำลังโหลดข้อมูลผลงาน...</p>
+          <div className="py-20 flex flex-col items-center justify-center text-[#7d6353] space-y-3">
+            <div className="w-8 h-8 border-3 border-[#b8651f] border-t-transparent rounded-full animate-spin" />
+            <p className="text-sm font-medium">กำลังโหลดข้อมูลผลงาน...</p>
           </div>
         ) : displayedItems.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -386,14 +369,14 @@ export default function WinnieAdminPage() {
             ))}
           </div>
         ) : (
-          <div className="py-16 text-center rounded-3xl border border-dashed border-slate-800 bg-slate-900/30 p-8 space-y-4">
-            <p className="text-slate-400 text-sm">ยังไม่มีผลงานในหมวดหมู่นี้</p>
+          <div className="py-16 text-center rounded-[32px] border-2 border-dashed border-[#dec7b2] bg-white/70 p-8 space-y-4">
+            <p className="text-[#7d6353] text-sm font-medium">ยังไม่มีผลงานในหมวดหมู่นี้</p>
             <button
               onClick={() => {
                 setEditingItem(null);
                 setIsAddModalOpen(true);
               }}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 text-white transition"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 clay-btn-caramel text-xs font-bold cursor-pointer"
             >
               <Plus className="w-4 h-4" /> เพิ่มผลงานชิ้นแรก
             </button>

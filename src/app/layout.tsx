@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th" className={`${promptFont.variable} scroll-smooth`}>
-      <body className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+      <body className="min-h-screen bg-[#fcf8f4] text-[#2c1a11] font-sans antialiased selection:bg-[#d88337]/25 selection:text-[#53321c]">
         {children}
       </body>
     </html>

@@ -63,7 +63,6 @@ export default function AdminClassworkDialog({
       setTagsInput(editingItem.tags ? editingItem.tags.join(', ') : '');
       setIsShowcase(editingItem.is_showcase);
     } else {
-      // Defaults for new item
       setTitle('');
       setSubject(COMMON_SUBJECTS[0]);
       setCustomSubject('');
@@ -146,47 +145,47 @@ export default function AdminClassworkDialog({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#2c1a11]/40 backdrop-blur-md animate-in fade-in duration-200">
       <div
-        className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl flex flex-col"
+        className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-[32px] bg-white border border-[#e8dcd0] shadow-[0_24px_60px_rgba(62,36,21,0.2)] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="sticky top-0 z-10 px-6 py-4 bg-slate-900/95 backdrop-blur border-b border-slate-800 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="p-2 rounded-xl bg-cyan-950 text-cyan-400 border border-cyan-800">
-              <Star className="w-5 h-5 fill-cyan-400" />
+        <div className="sticky top-0 z-10 px-7 py-5 bg-white/95 backdrop-blur border-b border-[#f0e4d7] flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 rounded-2xl bg-[#faefe3] text-[#b8651f] border border-[#e8ceb7]">
+              <Star className="w-5 h-5 fill-[#d88337]" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-white">
+              <h2 className="text-lg font-bold text-[#361f12]">
                 {editingItem ? 'แก้ไขข้อมูลผลงาน' : 'เพิ่มผลงานการเรียนใหม่'}
               </h2>
-              <p className="text-xs text-slate-400">สำหรับห้อง 1สทส1 วิธวินท์ แก้วพัฒ</p>
+              <p className="text-xs text-[#8c6f5d]">สำหรับห้อง 1สทส1 วิธวินท์ แก้วพัฒ</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition"
+            className="p-2 rounded-full text-[#8c6f5d] hover:text-[#361f12] hover:bg-[#f7eee3] transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Form Body */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-5">
+        <form onSubmit={handleSubmit} className="p-7 space-y-5">
           {/* Work Type Selection */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-300">
-              ประเภทของผลงาน <span className="text-rose-400">*</span>
+            <label className="text-xs font-bold text-[#4a2e1b]">
+              ประเภทของผลงาน <span className="text-rose-500">*</span>
             </label>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-2.5">
               <button
                 type="button"
                 onClick={() => setType('link')}
-                className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border text-xs sm:text-sm font-medium transition ${
+                className={`flex items-center justify-center gap-2 py-3 px-3 rounded-2xl text-xs sm:text-sm font-semibold transition cursor-pointer ${
                   type === 'link'
-                    ? 'bg-blue-600/20 border-blue-500 text-blue-300 shadow-md shadow-blue-500/10'
-                    : 'bg-slate-800/50 border-slate-700/80 text-slate-400 hover:text-slate-200'
+                    ? 'clay-pill-active'
+                    : 'clay-pill text-[#6d4d37]'
                 }`}
               >
                 <LinkIcon className="w-4 h-4" />
@@ -195,10 +194,10 @@ export default function AdminClassworkDialog({
               <button
                 type="button"
                 onClick={() => setType('photo')}
-                className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border text-xs sm:text-sm font-medium transition ${
+                className={`flex items-center justify-center gap-2 py-3 px-3 rounded-2xl text-xs sm:text-sm font-semibold transition cursor-pointer ${
                   type === 'photo'
-                    ? 'bg-purple-600/20 border-purple-500 text-purple-300 shadow-md shadow-purple-500/10'
-                    : 'bg-slate-800/50 border-slate-700/80 text-slate-400 hover:text-slate-200'
+                    ? 'clay-pill-active'
+                    : 'clay-pill text-[#6d4d37]'
                 }`}
               >
                 <ImageIcon className="w-4 h-4" />
@@ -207,10 +206,10 @@ export default function AdminClassworkDialog({
               <button
                 type="button"
                 onClick={() => setType('file')}
-                className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl border text-xs sm:text-sm font-medium transition ${
+                className={`flex items-center justify-center gap-2 py-3 px-3 rounded-2xl text-xs sm:text-sm font-semibold transition cursor-pointer ${
                   type === 'file'
-                    ? 'bg-emerald-600/20 border-emerald-500 text-emerald-300 shadow-md shadow-emerald-500/10'
-                    : 'bg-slate-800/50 border-slate-700/80 text-slate-400 hover:text-slate-200'
+                    ? 'clay-pill-active'
+                    : 'clay-pill text-[#6d4d37]'
                 }`}
               >
                 <FileText className="w-4 h-4" />
@@ -221,29 +220,29 @@ export default function AdminClassworkDialog({
 
           {/* Title */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-300">
-              ชื่อชิ้นงาน / หัวข้อการบ้าน <span className="text-rose-400">*</span>
+            <label className="text-xs font-bold text-[#4a2e1b]">
+              ชื่อชิ้นงาน / หัวข้อการบ้าน <span className="text-rose-500">*</span>
             </label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="เช่น ออกแบบหน้าเว็บ Portfolio, สรุปแล็บระบบเครือข่าย..."
+              placeholder="เช่น ออกแบบหน้าจอมือถือ Flutter, ระบบ Login บนแอป..."
               required
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 text-sm"
+              className="w-full px-4 py-3 clay-input text-[#361f12] placeholder-[#a68c7c] text-sm"
             />
           </div>
 
           {/* Subject & Category */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-300">
-                วิชา / หมวดหมู่รายวิชา <span className="text-rose-400">*</span>
+              <label className="text-xs font-bold text-[#4a2e1b]">
+                วิชา / หมวดหมู่รายวิชา <span className="text-rose-500">*</span>
               </label>
               <select
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white focus:outline-none focus:border-cyan-500 text-sm"
+                className="w-full px-4 py-3 clay-input text-[#361f12] text-sm"
               >
                 {COMMON_SUBJECTS.map((sub, i) => (
                   <option key={i} value={sub}>
@@ -258,22 +257,22 @@ export default function AdminClassworkDialog({
                   value={customSubject}
                   onChange={(e) => setCustomSubject(e.target.value)}
                   placeholder="ระบุชื่อวิชา..."
-                  className="mt-2 w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500"
+                  className="mt-2 w-full px-3.5 py-2 clay-input text-[#361f12] text-xs"
                 />
               )}
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-300">ประเภทงาน</label>
+              <label className="text-xs font-bold text-[#4a2e1b]">ประเภทงาน</label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white focus:outline-none focus:border-cyan-500 text-sm"
+                className="w-full px-4 py-3 clay-input text-[#361f12] text-sm"
               >
                 <option value="Project">โครงงาน / โปรเจกต์ (Project)</option>
                 <option value="Assignment">การบ้าน / แบบฝึกหัด (Assignment)</option>
                 <option value="Lab Report">รายงานแล็บ (Lab Report)</option>
-                <option value="Design">งานออกแบบ / มีเดีย (Design)</option>
+                <option value="Design">งานออกแบบ / UI/UX (Design)</option>
                 <option value="Certificate">เกียรติบัตร / รางวัล (Certificate)</option>
                 <option value="Exam / Test">สรุปสอบ / แบบทดสอบ</option>
               </select>
@@ -281,11 +280,11 @@ export default function AdminClassworkDialog({
           </div>
 
           {/* Link URL or File / Photo Upload */}
-          <div className="space-y-2 p-4 rounded-2xl bg-slate-950/60 border border-slate-800">
+          <div className="space-y-2 p-5 rounded-2xl bg-[#faf5ef] border border-[#ebdccf]">
             {type === 'link' ? (
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-slate-300">
-                  URL ของลิงก์ผลงาน <span className="text-rose-400">*</span>
+                <label className="text-xs font-bold text-[#4a2e1b]">
+                  URL ของลิงก์ผลงาน <span className="text-rose-500">*</span>
                 </label>
                 <input
                   type="url"
@@ -293,42 +292,42 @@ export default function AdminClassworkDialog({
                   onChange={(e) => setUrl(e.target.value)}
                   placeholder="https://github.com/..., https://drive.google.com/..., https://figma.com/..."
                   required
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 text-sm"
+                  className="w-full px-4 py-3 clay-input bg-white text-[#361f12] placeholder-[#a68c7c] text-sm"
                 />
               </div>
             ) : (
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-semibold text-slate-300">
+                  <label className="text-xs font-bold text-[#4a2e1b]">
                     {type === 'photo' ? 'อัปโหลดรูปภาพ' : 'อัปโหลดไฟล์เอกสาร'}
                   </label>
                   {isUploading && (
-                    <span className="flex items-center gap-1.5 text-xs text-cyan-400 font-medium">
+                    <span className="flex items-center gap-1.5 text-xs text-[#b8651f] font-semibold">
                       <Loader2 className="w-3.5 h-3.5 animate-spin" /> กำลังอัปโหลด...
                     </span>
                   )}
                 </div>
 
-                {/* Upload File Input */}
-                <label className="flex flex-col items-center justify-center p-5 border-2 border-dashed border-slate-700 hover:border-cyan-500/80 rounded-2xl cursor-pointer bg-slate-900/40 hover:bg-slate-900 transition">
-                  <Upload className="w-7 h-7 text-cyan-400 mb-2" />
-                  <span className="text-xs text-slate-300 font-medium">
-                    {type === 'photo' ? 'คลิกเลือกรูปภาพจากเครื่อง' : 'คลิกเลือกไฟล์ (PDF, ZIP, DOCX)'}
+                {/* Upload File Input with Clay look */}
+                <label className="flex flex-col items-center justify-center p-6 border-2 border-dashed border-[#d9c4b1] hover:border-[#b8651f] rounded-2xl cursor-pointer bg-white hover:bg-[#fbf7f2] transition">
+                  <Upload className="w-7 h-7 text-[#b8651f] mb-2" />
+                  <span className="text-xs text-[#361f12] font-bold">
+                    {type === 'photo' ? 'คลิกเลือกรูปภาพจากเครื่อง' : 'คลิกเลือกไฟล์ (PDF, ZIP, APK, DOCX)'}
                   </span>
-                  <span className="text-[11px] text-slate-500 mt-1">
+                  <span className="text-[11px] text-[#8c6f5d] mt-1">
                     {fileName ? `ไฟล์ที่เลือก: ${fileName} (${fileSize})` : 'หรือวาง URL ด้านล่างได้เช่นกัน'}
                   </span>
                   <input
                     type="file"
-                    accept={type === 'photo' ? 'image/*' : '.pdf,.doc,.docx,.zip,.rar,.txt'}
+                    accept={type === 'photo' ? 'image/*' : '.pdf,.doc,.docx,.zip,.rar,.txt,.apk'}
                     onChange={handleFileUpload}
                     className="hidden"
                   />
                 </label>
 
-                {/* Fallback Direct URL input */}
+                {/* Fallback Direct URL */}
                 <div className="space-y-1 pt-1">
-                  <label className="text-[11px] text-slate-400">หรือวาง URL โดยตรง:</label>
+                  <label className="text-[11px] text-[#8c6f5d] font-medium">หรือวาง URL โดยตรง:</label>
                   <input
                     type="text"
                     value={url}
@@ -338,7 +337,7 @@ export default function AdminClassworkDialog({
                         ? 'https://images.unsplash.com/... หรือ URL รูปภาพ'
                         : 'https://example.com/file.pdf หรือลิงก์ดาวน์โหลด'
                     }
-                    className="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-800 text-white text-xs placeholder-slate-600 focus:outline-none focus:border-cyan-500 font-mono"
+                    className="w-full px-3.5 py-2 clay-input bg-white text-[#361f12] text-xs font-mono"
                   />
                 </div>
               </div>
@@ -347,42 +346,42 @@ export default function AdminClassworkDialog({
 
           {/* Description */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-300">รายละเอียดผลงาน / สิ่งที่ได้เรียนรู้</label>
+            <label className="text-xs font-bold text-[#4a2e1b]">รายละเอียดผลงาน / สิ่งที่ได้เรียนรู้</label>
             <textarea
               rows={3}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="สรุปแนวคิด ผลการทดลอง ขั้นตอนการทำ หรือเทคโนโลยีที่ใช้ในผลงานนี้..."
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 text-sm"
+              placeholder="สรุปแนวคิด โค้ดที่ใช้ ฟังก์ชันหลัก หรือเทคโนโลยีในแอปนี้..."
+              className="w-full px-4 py-3 clay-input text-[#361f12] placeholder-[#a68c7c] text-sm"
             />
           </div>
 
           {/* Tags */}
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-300">
+            <label className="text-xs font-bold text-[#4a2e1b]">
               แท็กคำค้นหา (คั่นด้วยเครื่องหมายจุลภาค ,)
             </label>
             <input
               type="text"
               value={tagsInput}
               onChange={(e) => setTagsInput(e.target.value)}
-              placeholder="Next.js, Python, Network, Cisco, Midterm"
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 text-sm"
+              placeholder="Flutter, Dart, Mobile, Android, UI, Figma"
+              className="w-full px-4 py-3 clay-input text-[#361f12] placeholder-[#a68c7c] text-sm"
             />
           </div>
 
-          {/* Showcase Switch */}
-          <div className="flex items-center justify-between p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30">
+          {/* Showcase Switch with Clay Styling */}
+          <div className="flex items-center justify-between p-4 rounded-2xl bg-[#faefe3] border border-[#e5cdb7]">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-xl bg-amber-500/20 text-amber-400">
-                <Star className="w-5 h-5 fill-amber-400" />
+              <div className="p-2.5 rounded-xl bg-white shadow-xs text-[#b8651f]">
+                <Star className="w-5 h-5 fill-[#d88337]" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-amber-200">
+                <p className="text-sm font-bold text-[#5c3010]">
                   แสดงในหน้าโชว์เคส (Showcase on Website)
                 </p>
-                <p className="text-xs text-amber-400/80">
-                  หากเปิดไว้ ผลงานชิ้นนี้จะแสดงในหน้าแรกของพอร์ตโฟลิโอให้ผู้เข้าชมทุกคนเห็น
+                <p className="text-xs text-[#8c5730]">
+                  เปิดไว้เพื่อให้แสดงบนหน้าแรกของพอร์ตโฟลิโอให้ผู้เข้าชมทุกคนเห็น
                 </p>
               </div>
             </div>
@@ -393,24 +392,24 @@ export default function AdminClassworkDialog({
                 onChange={(e) => setIsShowcase(e.target.checked)}
                 className="sr-only peer"
               />
-              <div className="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-500" />
+              <div className="w-12 h-6 bg-[#d9c4b1] peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#b8651f]" />
             </label>
           </div>
 
           {/* Submit Buttons */}
-          <div className="pt-2 flex items-center justify-end gap-3 border-t border-slate-800">
+          <div className="pt-2 flex items-center justify-end gap-3 border-t border-[#f0e4d7]">
             <button
               type="button"
               onClick={onClose}
               disabled={isSubmitting}
-              className="px-5 py-2.5 rounded-xl text-sm font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 transition"
+              className="px-5 py-2.5 clay-pill text-xs sm:text-sm font-semibold text-[#6d4d37] cursor-pointer"
             >
               ยกเลิก
             </button>
             <button
               type="submit"
               disabled={isSubmitting || isUploading}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/25 transition active:scale-95 disabled:opacity-50"
+              className="inline-flex items-center gap-2 px-6 py-2.5 clay-btn-caramel text-xs sm:text-sm font-bold cursor-pointer disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>

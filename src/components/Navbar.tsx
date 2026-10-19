@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Sparkles, Database, Layers } from 'lucide-react';
+import { Sparkles, Database, Layers, LogOut, Plus } from 'lucide-react';
 import { isSupabaseConfigured } from '@/lib/supabase';
 
 interface NavbarProps {
@@ -20,81 +20,82 @@ export default function Navbar({
   onOpenConfig,
 }: NavbarProps) {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Brand / Profile Header */}
+    <header className="sticky top-0 z-40 w-full bg-[#fcf8f4]/90 backdrop-blur-md border-b border-[#e8dcd0]/70 py-2.5 transition-all">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        {/* Brand / Profile with Claymorphism */}
         <Link href={isAdmin ? "/winnie" : "/"} className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-cyan-500/50 group-hover:ring-cyan-400 transition-all shadow-md shadow-cyan-500/20">
+          <div className="relative w-11 h-11 rounded-2xl overflow-hidden shadow-[4px_6px_14px_rgba(62,36,21,0.12),inset_2px_2px_4px_rgba(255,255,255,0.8)] border-2 border-[#e6d5c3] group-hover:scale-105 transition-transform duration-300">
             <Image
               src="/profile.jpg"
               alt="วิธวินท์ แก้วพัฒ"
               fill
               className="object-cover"
-              sizes="40px"
+              sizes="44px"
               priority
             />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-white group-hover:text-cyan-300 transition-colors tracking-wide">
+              <span className="font-bold text-[#3e2415] group-hover:text-[#8c5228] transition-colors tracking-tight text-base sm:text-lg">
                 วิธวินท์ แก้วพัฒ
               </span>
-              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-cyan-950/80 text-cyan-300 border border-cyan-800/60">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#f3e5d7] text-[#6d3e1d] border border-[#dfc8b4] shadow-xs">
                 1สทส1
               </span>
             </div>
-            <p className="text-xs text-slate-400">Information Technology Portfolio</p>
+            <p className="text-xs text-[#8c6f5d] font-medium">Mobile Application Developer</p>
           </div>
         </Link>
 
-        {/* Center / Right Nav Items */}
-        <div className="flex items-center gap-3">
-          {/* Supabase Status Pill */}
+        {/* Right Nav Items */}
+        <div className="flex items-center gap-2.5">
+          {/* Supabase Status Clay Pill */}
           <button
             type="button"
             onClick={onOpenConfig}
             title={isSupabaseConfigured ? "เชื่อมต่อ Supabase Database สำเร็จ" : "โหมด Local Storage (คลิกเพื่อดูวิธีตั้งค่า Supabase)"}
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-slate-900 border border-slate-800 text-slate-300 hover:border-slate-700 transition"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 clay-pill text-xs font-medium cursor-pointer"
           >
             <span
               className={`w-2 h-2 rounded-full ${
-                isSupabaseConfigured ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'
+                isSupabaseConfigured ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'
               }`}
             />
-            <Database className="w-3.5 h-3.5 text-slate-400" />
-            <span>{isSupabaseConfigured ? 'Supabase Live' : 'Local Data'}</span>
+            <Database className="w-3.5 h-3.5 text-[#8c6f5d]" />
+            <span className="text-[#54331d]">{isSupabaseConfigured ? 'Supabase Live' : 'Local Data'}</span>
           </button>
 
           {isAdmin ? (
-            /* Admin controls when inside /winnie */
+            /* Admin controls inside /winnie */
             <div className="flex items-center gap-2">
               <Link
                 href="/"
                 target="_blank"
-                className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 bg-slate-800/60 hover:bg-slate-800 border border-slate-700 transition"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 clay-pill text-xs font-semibold text-[#54331d]"
               >
-                <Layers className="w-3.5 h-3.5 text-cyan-400" />
-                ดูหน้าโชว์เคสจริง
+                <Layers className="w-3.5 h-3.5 text-[#a8652c]" />
+                ดูหน้าโชว์เคส
               </Link>
               <button
                 onClick={onOpenAddModal}
-                className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-medium bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/25 transition active:scale-95"
+                className="inline-flex items-center gap-1.5 px-4 py-2 clay-btn-caramel text-xs sm:text-sm font-semibold cursor-pointer"
               >
-                <Sparkles className="w-4 h-4" />
-                + เพิ่มผลงานใหม่
+                <Plus className="w-4 h-4 stroke-[2.5]" />
+                เพิ่มผลงาน
               </button>
               <button
                 onClick={onLogout}
-                className="px-3 py-1.5 rounded-lg text-xs font-medium text-rose-300 bg-rose-950/40 hover:bg-rose-900/60 border border-rose-800/50 transition"
+                title="ออกจากระบบ"
+                className="p-2 rounded-2xl bg-[#faeceb] text-[#b33a3a] border border-[#f0c5c5] hover:bg-[#f7d8d8] shadow-xs transition cursor-pointer"
               >
-                ออกจากระบบ
+                <LogOut className="w-4 h-4" />
               </button>
             </div>
           ) : (
-            /* Visitor View: Clean badges only */
+            /* Visitor View: Minimal & Clean Clay Badge */
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-slate-900 text-slate-300 border border-slate-800">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 clay-pill text-xs font-semibold text-[#6d3e1d]">
+                <Sparkles className="w-3.5 h-3.5 fill-[#d88337] text-[#d88337]" />
                 Showcase Mode
               </span>
             </div>
