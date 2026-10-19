@@ -50,7 +50,7 @@ export default function Navbar({
         {/* Right Nav Items */}
         <div className="flex items-center gap-2.5">
           {/* Supabase Status Clay Pill */}
-          <button
+          {/* <button
             type="button"
             onClick={onOpenConfig}
             title={isSupabaseConfigured ? "เชื่อมต่อ Supabase Database สำเร็จ" : "โหมด Local Storage (คลิกเพื่อดูวิธีตั้งค่า Supabase)"}
@@ -63,7 +63,7 @@ export default function Navbar({
             />
             <Database className="w-3.5 h-3.5 text-[#8c6f5d]" />
             <span className="text-[#54331d]">{isSupabaseConfigured ? 'Supabase Live' : 'Local Data'}</span>
-          </button>
+          </button> */}
 
           {isAdmin ? (
             /* Admin controls inside /winnie */

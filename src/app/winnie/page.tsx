@@ -298,21 +298,19 @@ export default function WinnieAdminPage() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setActiveTab('all')}
-              className={`px-4 py-2 text-xs font-bold transition cursor-pointer ${
-                activeTab === 'all'
+              className={`px-4 py-2 text-xs font-bold transition cursor-pointer ${activeTab === 'all'
                   ? 'clay-pill-active'
                   : 'clay-pill text-[#6d4d37]'
-              }`}
+                }`}
             >
               ผลงานทั้งหมด ({classworks.length})
             </button>
             <button
               onClick={() => setActiveTab('showcase_only')}
-              className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition cursor-pointer ${
-                activeTab === 'showcase_only'
+              className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition cursor-pointer ${activeTab === 'showcase_only'
                   ? 'clay-pill-active'
                   : 'clay-pill text-[#6d4d37]'
-              }`}
+                }`}
             >
               <Star className="w-3.5 h-3.5 fill-[#d88337]" />
               เฉพาะที่อยู่ใน Showcase ({showcaseCount})
