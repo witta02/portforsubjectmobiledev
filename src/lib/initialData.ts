@@ -9,7 +9,7 @@ export const initialClassworks: Classwork[] = [
     subject: "Mobile Application Developer",
     category: "Project",
     type: "link",
-    url: "https://github.com/vitawinz",
+    url: "https://github.com/witta02/portforsubjectmobiledev",
     is_showcase: true,
     tags: ["Flutter", "Dart", "Mobile App", "Android", "iOS", "Supabase"],
     term: "1/2567",

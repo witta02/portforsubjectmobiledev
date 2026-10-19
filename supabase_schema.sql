@@ -73,7 +73,7 @@ values
   'Mobile Application Developer',
   'Project',
   'link',
-  'https://github.com/vitawinz',
+  'https://github.com/witta02/portforsubjectmobiledev',
   null,
   null,
   true,
