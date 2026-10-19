@@ -168,9 +168,9 @@ export default function WinnieAdminPage() {
             <div>
               <div className="flex items-center justify-center gap-2">
                 <h1 className="text-xl font-extrabold text-[#361f12]">วิธวินท์ แก้วพัฒ (Winnie)</h1>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#faefe3] text-[#a8591a] border border-[#e8ceb7]">
+                {/* <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#faefe3] text-[#a8591a] border border-[#e8ceb7]">
                   1สทส1
-                </span>
+                </span> */}
               </div>
               <p className="text-xs text-[#7d6353] mt-1 font-medium">
                 เข้าสู่ระบบผู้ดูแลเพื่อเพิ่มผลงานและปรับแต่งโชว์เคส
@@ -299,8 +299,8 @@ export default function WinnieAdminPage() {
             <button
               onClick={() => setActiveTab('all')}
               className={`px-4 py-2 text-xs font-bold transition cursor-pointer ${activeTab === 'all'
-                  ? 'clay-pill-active'
-                  : 'clay-pill text-[#6d4d37]'
+                ? 'clay-pill-active'
+                : 'clay-pill text-[#6d4d37]'
                 }`}
             >
               ผลงานทั้งหมด ({classworks.length})
@@ -308,8 +308,8 @@ export default function WinnieAdminPage() {
             <button
               onClick={() => setActiveTab('showcase_only')}
               className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition cursor-pointer ${activeTab === 'showcase_only'
-                  ? 'clay-pill-active'
-                  : 'clay-pill text-[#6d4d37]'
+                ? 'clay-pill-active'
+                : 'clay-pill text-[#6d4d37]'
                 }`}
             >
               <Star className="w-3.5 h-3.5 fill-[#d88337]" />

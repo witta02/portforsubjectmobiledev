@@ -93,12 +93,7 @@ export default function Navbar({
             </div>
           ) : (
             /* Visitor View: Minimal & Clean Clay Badge */
-            <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 clay-pill text-xs font-semibold text-[#6d3e1d]">
-                <Sparkles className="w-3.5 h-3.5 fill-[#d88337] text-[#d88337]" />
-                Showcase Mode
-              </span>
-            </div>
+            null
           )}
         </div>
       </div>

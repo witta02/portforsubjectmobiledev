@@ -11,7 +11,7 @@ const promptFont = Prompt({
 
 export const metadata: Metadata = {
   title: "วิธวินท์ แก้วพัฒ (1สทส1) - Mobile Application Developer Portfolio",
-  description: "แฟ้มสะสมผลงานการเรียนรายวิชา Mobile Application Developer คลังผลงานแอปพลิเคชัน ชิ้นงาน ลิงก์ และโชว์เคสของ วิธวินท์ แก้วพัฒ แผนกเทคโนโลยีสารสนเทศ ชั้น 1สทส1",
+  description: "แฟ้มสะสมผลงานการเรียนรายวิชา การพัฒนาซอฟต์แวร์สำหรับอุปกรณ์เคลื่อนที่ 31901-2009",
   icons: {
     icon: "/profile.jpg",
   },

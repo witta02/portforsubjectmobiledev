@@ -89,7 +89,7 @@ export default function HomePage() {
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#faefe3] text-[#a8591a] border border-[#e8ceb7] mb-2 shadow-xs">
               <Sparkles className="w-3.5 h-3.5 fill-[#d88337] text-[#d88337]" />
-              คลังผลงานโดดเด่น (Featured Showcase)
+              คลังผลงาน
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#361f12] tracking-tight">
               ผลงานและชิ้นงานโชว์เคส
@@ -112,44 +112,40 @@ export default function HomePage() {
           <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
             <button
               onClick={() => setFilterType('all')}
-              className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition shrink-0 cursor-pointer ${
-                filterType === 'all'
-                  ? 'clay-pill-active'
-                  : 'clay-pill text-[#6d4d37]'
-              }`}
+              className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition shrink-0 cursor-pointer ${filterType === 'all'
+                ? 'clay-pill-active'
+                : 'clay-pill text-[#6d4d37]'
+                }`}
             >
               <Layers className="w-3.5 h-3.5" />
               ทั้งหมด ({showcaseOnlyList.length})
             </button>
             <button
               onClick={() => setFilterType('link')}
-              className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition shrink-0 cursor-pointer ${
-                filterType === 'link'
-                  ? 'clay-pill-active'
-                  : 'clay-pill text-[#6d4d37]'
-              }`}
+              className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition shrink-0 cursor-pointer ${filterType === 'link'
+                ? 'clay-pill-active'
+                : 'clay-pill text-[#6d4d37]'
+                }`}
             >
               <LinkIcon className="w-3.5 h-3.5" />
               ลิงก์ผลงาน
             </button>
             <button
               onClick={() => setFilterType('photo')}
-              className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition shrink-0 cursor-pointer ${
-                filterType === 'photo'
-                  ? 'clay-pill-active'
-                  : 'clay-pill text-[#6d4d37]'
-              }`}
+              className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition shrink-0 cursor-pointer ${filterType === 'photo'
+                ? 'clay-pill-active'
+                : 'clay-pill text-[#6d4d37]'
+                }`}
             >
               <ImageIcon className="w-3.5 h-3.5" />
               รูปภาพ/UI
             </button>
             <button
               onClick={() => setFilterType('file')}
-              className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition shrink-0 cursor-pointer ${
-                filterType === 'file'
-                  ? 'clay-pill-active'
-                  : 'clay-pill text-[#6d4d37]'
-              }`}
+              className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition shrink-0 cursor-pointer ${filterType === 'file'
+                ? 'clay-pill-active'
+                : 'clay-pill text-[#6d4d37]'
+                }`}
             >
               <FileText className="w-3.5 h-3.5" />
               ไฟล์เอกสาร
@@ -190,7 +186,7 @@ export default function HomePage() {
         {loading ? (
           <div className="py-20 flex flex-col items-center justify-center text-[#7d6353] space-y-3">
             <div className="w-8 h-8 border-3 border-[#b8651f] border-t-transparent rounded-full animate-spin" />
-            <p className="text-sm font-medium">กำลังโหลดคลังผลงานโชว์เคส...</p>
+            <p className="text-sm font-medium">กำลังโหลดผลงาน</p>
           </div>
         ) : filteredList.length > 0 ? (
           /* Cards Grid */
